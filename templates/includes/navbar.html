@@ -151,7 +151,7 @@
           {% comment %} <li><a href="">Phụ kiện</a></li> {% endcomment %}
           <li{% if current_path == 'discounted_products' %} class="active" {% endif %}><a
               href="{% url 'discounted_products' %}">Flash Sale</a></li>
-            <li><a href="blog.html">Blog</a></li>
+          <li><a href="{% url 'new_products' %}">Sản phẩm mới</a></li> 
         </ul>
       </nav>
     </div>

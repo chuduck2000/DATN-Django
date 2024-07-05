@@ -10,5 +10,5 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('submit_review/<int:product_id>/', views.submit_review, name='submit_review'),
     path('discounts/', views.discounted_products, name='discounted_products'),
-
+    path('new-products/', views.new_products, name='new_products'),
 ]
