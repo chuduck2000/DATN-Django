@@ -211,7 +211,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
 
             # Calculate shipping charge and apply discount if applicable
         if total > 1000:
-            discount = total * 0.10
+            discount = round(total * 0.10, 2)
             ship = 0  # Free shipping for orders over $1000
         elif total > 500:
             ship = 0  # Free shipping for orders over $500

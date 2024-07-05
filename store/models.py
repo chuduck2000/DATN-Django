@@ -90,7 +90,7 @@ class ReviewRating(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Người dùng')
     subject = models.CharField(max_length=100, blank=True, verbose_name='Chủ đề')
     review = models.TextField(max_length=500, blank=True, verbose_name='Đánh giá')
-    rating = models.FloatField(verbose_name='Điểm đánh giá')
+    rating = models.FloatField(validators=[MinValueValidator(0)], verbose_name='Điểm đánh giá')
     ip = models.CharField(max_length=20, blank=True, verbose_name='Địa chỉ IP')
     status = models.BooleanField(default=True, verbose_name='Trạng thái')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Ngày tạo')

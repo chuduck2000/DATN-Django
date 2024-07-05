@@ -1,6 +1,7 @@
 from django.db import models
 from accounts.models import Account
 from store.models import Product, Variation
+from django.core.validators import MinValueValidator
 
 class Payment(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Người dùng')
@@ -59,7 +60,7 @@ class OrderProduct(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Người dùng')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Sản phẩm')
     variations = models.ManyToManyField(Variation, blank=True, verbose_name='Biến thể')
-    quantity = models.IntegerField(verbose_name='Số lượng')
+    quantity = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='Số lượng')
     product_price = models.FloatField(verbose_name='Giá sản phẩm')
     ordered = models.BooleanField(default=False, verbose_name='Đã đặt hàng')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Ngày tạo')

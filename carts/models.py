@@ -11,6 +11,10 @@ class Cart(models.Model):
 
     def __str__(self):
         return self.cart_id
+    
+    class Meta:
+        verbose_name = 'Giỏ hàng'
+        verbose_name_plural = 'Giỏ hàng'
 
 
 class CartItem(models.Model):
@@ -26,3 +30,7 @@ class CartItem(models.Model):
 
     def __unicode__(self):
         return self.product
+
+    class Meta:
+        verbose_name = 'Sản phẩm trong giỏ'
+        verbose_name_plural = 'Sản phẩm trong giỏ'

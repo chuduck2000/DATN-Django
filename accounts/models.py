@@ -58,6 +58,10 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+        
+    class Meta:
+        verbose_name = 'Tài khoản'
+        verbose_name_plural = 'Tài khoản'
 
 
 class UserProfile(models.Model):
@@ -71,3 +75,7 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    class Meta:
+        verbose_name = 'Thông tin người dùng'
+        verbose_name_plural = 'Thông tin người dùng'
