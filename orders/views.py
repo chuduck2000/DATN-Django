@@ -89,7 +89,7 @@ def order_complete(request):
         subtotal = 0
         for i in ordered_products:
             subtotal += i.product_price * i.quantity
-        discount = subtotal * 0.10 if subtotal > 1000 else 0
+        discount = round(subtotal * 0.10, 2) if subtotal > 1000 else 0
 
         payment = Payment.objects.get(payment_id=transID) if transID != 'COD' else None
         context = {
@@ -124,7 +124,7 @@ def place_order(request):
 
     # Calculate shipping charge
     if total > 1000:
-        discount = total * 0.10
+        discount = round(total * 0.10, 2)
         ship = 0  # Free shipping for orders over $1000
     elif total > 500:
         ship = 0  # Free shipping for orders over $500

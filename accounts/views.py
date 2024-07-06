@@ -278,7 +278,7 @@ def change_password(request):
                 messages.success(request, 'Đổi mật khẩu thành công. ')
                 return redirect('change_password')
             else:
-                messages.error(request, 'Vui lòng nhập mật khẩu cũ. ')
+                messages.error(request, 'Mật khẩu cũ không đúng. ')
                 return redirect('change_password')
         else:
             messages.error(request, 'Mật khẩu không đúng. ')
@@ -294,9 +294,9 @@ def order_detail(request, order_id):
     for i in order_detail:
         subtotal += i.product_price * i.quantity
         if subtotal > 1000:
-                    discount = subtotal * 0.10
+            discount = round(subtotal * 0.10, 2)
         else:
-                    discount = 0
+            discount = 0
     context = {
         'order_detail':order_detail,
         'order': order,
